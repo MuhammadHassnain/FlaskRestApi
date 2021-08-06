@@ -1,10 +1,12 @@
 from flask_script import Manager
 
-
-from app import create_app
+from app.main import create_app
+from app import blueprint
 
 
 app = create_app('dev')
+app.register_blueprint(blueprint)
+app.app_context().push()
 
 
 manager = Manager(app)
@@ -12,7 +14,7 @@ manager = Manager(app)
 
 @manager.command
 def run():
-    app.run()
+    app.run(host='0.0.0.0')
 
 
 if __name__ == '__main__':

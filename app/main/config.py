@@ -12,8 +12,12 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + \
-        os.path.join(basedir, 'flask_boilerplate_main.db')
+    server = 'localhost'
+    password = 'password'
+    database = 'RBA'
+    user = 'root'
+    ERROR_INCLUDE_MESSAGE = False
+    SQLALCHEMY_DATABASE_URI = f"mysql://{user}:{password}@{server}:3306/{database}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 
